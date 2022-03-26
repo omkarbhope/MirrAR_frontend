@@ -38,13 +38,7 @@ export default function Tryout_shirt() {
                 <div className="row">
                     <div className="col-sm">
                         <div className="row-sm">
-                        <iframe
-                                src={'http://127.0.0.1:8080/video_feed_tshirt'}
-                                width={1000} 
-                                height={500}
-                                allow="autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                allowFullScreen>
-                        </iframe>
+                            <Link to='/tshirt'><img src={arrow} className="arrow float-left"></img></Link>
                         </div>
                     </div>
                     <div className="col-sm">
@@ -63,10 +57,13 @@ export default function Tryout_shirt() {
                 </div>
                 <hr></hr>   
             <div className='container cont-tryon bg-light rounded'>
-                <div class="ar-window">
-                    <video onloadedmetadata="onPlay(this)" id="inputVideo" autoplay></video>
-                    <canvas id="overlay"></canvas>
-                </div>
+                <iframe
+                        src={'http://127.0.0.1:8080/video_feed_tshirt'}
+                        width={500} 
+                        height={400}
+                        allow="autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen>
+                </iframe>
             </div>
             <div className="row">
                 <div className="col-sm">

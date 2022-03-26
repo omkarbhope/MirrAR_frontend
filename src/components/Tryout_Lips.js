@@ -14,6 +14,27 @@ import lips1 from '../images/pac1.jpg'
 import lips2 from '../images/pac2.jpg'
 
 export default function Tryout() {
+    const [red, setRed] = useState(0)
+    const [blue, setBlue] = useState(0)
+    const [green, setGreen] = useState(0)
+
+    function updateColor(red,blue,green) {
+        setRed(red);
+        setBlue(blue);
+        setGreen(green);
+
+        fetch('http://127.0.0.1:8080/get_rgb', {
+            methods : 'POST',
+            headers : {
+                'Content-Type' : 'application.json'
+            },
+            body : JSON.stringify({r : red, g: green, b: blue})
+    })
+        .then(response => response.json())
+        .catch(error => console.log(error))
+
+    }
+
   return (
     <>
         {/*<div className="ar-window">
@@ -34,13 +55,7 @@ export default function Tryout() {
                 <div className="row">
                     <div className="col-sm">
                         <div className="row-sm">
-                        <iframe
-                                src={'http://127.0.0.1:8080/video_feed_makeup'}
-                                width={1000} 
-                                height={500}
-                                allow="autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                allowFullScreen>
-                        </iframe>
+                            <Link to='/lipproducts'><img src={arrow} className="arrow float-left"></img></Link>
                         </div>
                     </div>
                     <div className="col-sm">
@@ -59,10 +74,13 @@ export default function Tryout() {
                 </div>
                 <hr></hr>   
             <div className='container cont-tryon bg-light rounded'>
-                <div class="ar-window">
-                    <video onloadedmetadata="onPlay(this)" id="inputVideo" autoplay></video>
-                    <canvas id="overlay"></canvas>
-                </div>
+                <iframe
+                        src={'http://127.0.0.1:8080/video_feed_makeup'}
+                        width={500} 
+                        height={400}
+                        allow="autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen>
+                </iframe>
             </div>
             <div className="row">
                 <div className="col-sm">
@@ -92,14 +110,14 @@ export default function Tryout() {
                     <div className="col-sm-1">
                     </div>
                     <div className="col-sm-4 mt-2">
-                        <button className="color1 rounded-circle mr-3" id="color1"></button>
-                        <button className="color2 rounded-circle mr-3" id="color1"></button>
-                        <button className="color3 rounded-circle mr-3" id="color1"></button>
-                        <button className="color4 rounded-circle mr-3" id="color1"></button>
-                        <button className="color5 rounded-circle mr-3" id="color1"></button>
-                        <button className="color6 rounded-circle mr-3" id="color1"></button>
-                        <button className="color7 rounded-circle mr-3" id="color1"></button>
-                        <button className="color8 rounded-circle mr-3" id="color1"></button>
+                            <button className="color1 rounded-circle mr-3" onClick={() => {updateColor(144,0,31)}} id="color1"></button>
+                        <button className="color2 rounded-circle mr-3" onClick={() => {updateColor(219,7,52)}} id="color1"></button>
+                        <button className="color3 rounded-circle mr-3" onClick={() =>{updateColor(163,14,45)}} id="color1"></button>
+                        <button className="color4 rounded-circle mr-3" onClick={() =>{updateColor(114,22,41)}} id="color1"></button>
+                        <button className="color5 rounded-circle mr-3" onClick={() =>{updateColor(109,5,5)}} id="color1"></button>
+                        <button className="color6 rounded-circle mr-3" onClick={() =>{updateColor(114,22,41)}} id="color1"></button>
+                        <button className="color7 rounded-circle mr-3" onClick={() =>{updateColor(65,0,14)}} id="color1"></button>
+                        <button className="color8 rounded-circle mr-3" onClick={() =>{updateColor(114,22,41)}} id="color1"></button>
                         {/* <input type="range" min="20" max="100" className="slider1 ml-4" id="myRange" onchange ="updatePigmentation()"></input> */}
                     </div>
                     <div className="col-sm">

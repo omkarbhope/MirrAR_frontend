@@ -33,14 +33,7 @@ export default function Tryout_necklace() {
                 <div className="row">
                     <div className="col-sm">
                         <div className="row-sm">
-                        <iframe
-                                src={'http://127.0.0.1:8080/video_feed_necklace'}
-                                width={1000} 
-                                height={500}
-                                allow="autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                allowFullScreen>
-                        </iframe>
-                            {/* <Link to='/necklace'><img src={arrow} className="arrow float-left"></img></Link> */}
+                            <Link to='/necklace'><img src={arrow} className="arrow float-left"></img></Link>
                         </div>
                     </div>
                     <div className="col-sm">
@@ -59,10 +52,13 @@ export default function Tryout_necklace() {
                 </div>
                 <hr></hr>   
             <div className='container cont-tryon bg-light rounded'>
-                <div class="ar-window">
-                    <video onloadedmetadata="onPlay(this)" id="inputVideo" autoplay></video>
-                    <canvas id="overlay"></canvas>
-                </div>
+                <iframe
+                        src={'http://127.0.0.1:8080/video_feed_necklace'}
+                        width={500} 
+                        height={400}
+                        allow="autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen>
+                </iframe>
             </div>
             <div className="row">
                 <div className="col-sm">
@@ -79,7 +75,7 @@ export default function Tryout_necklace() {
                 </div>
             </div>
             <hr></hr>
-            <div class="container-fluid cont-2 rounded bg-light p-3 my-3 border">
+            <div class="container-fluid cont-2 rounded bg-light pt-3 mb-4 border">
                 <div className="row row1">
                     <div className="col-sm-1">
                             <img src={sessionStorage.getItem("necklace_img")} className="lips1"></img>
